@@ -1,0 +1,147 @@
+const cards = [];
+let flippedCards = [];
+let matchedPairs = 0;
+let score = 0;
+let timer;
+let seconds = 0;
+let canFlip = true;
+
+const rightSound = new Audio("../Audio/game/rightanswer.mp3");
+const wrongSound = new Audio("../Audio/game/error.wav");
+const successSound = new Audio("../Audio/game/success.wav");
+
+function initializeGame() {
+  const gameBoard = document.getElementById("gameBoard");
+  const cardImages = [];
+
+  for (let i = 1; i <= 10; i++) {
+    cardImages.push(`Food-${i.toString().padStart(2, "0")}.jpg`);
+    cardImages.push(`Food-${i.toString().padStart(2, "0")}.jpg`);
+  }
+
+  shuffleArray(cardImages);
+
+  cardImages.forEach((img, index) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.dataset.cardId = index;
+    card.dataset.image = img;
+
+    card.innerHTML = `
+              <div class="card-face card-front">
+                  <img src="../img/Game/${img}" alt="food">
+              </div>
+              <div class="card-face card-back"></div>
+          `;
+
+    card.addEventListener("click", () => flipCard(card));
+    gameBoard.appendChild(card);
+    cards.push(card);
+  });
+
+  startTimer();
+}
+
+function flipCard(card) {
+  if (
+    !canFlip ||
+    flippedCards.includes(card) ||
+    card.classList.contains("matched")
+  ) {
+    return;
+  }
+
+  card.classList.add("flipped");
+  flippedCards.push(card);
+
+  if (flippedCards.length === 2) {
+    canFlip = false;
+    checkMatch();
+  }
+}
+
+function checkMatch() {
+  const [card1, card2] = flippedCards;
+  const match = card1.dataset.image === card2.dataset.image;
+
+  if (match) {
+    rightSound.play();
+    card1.classList.add("matched");
+    card2.classList.add("matched");
+    score += 10;
+    matchedPairs++;
+
+    if (matchedPairs === 10) {
+      successSound.play();
+      endGame();
+    }
+  } else {
+    wrongSound.play();
+    setTimeout(() => {
+      card1.classList.remove("flipped");
+      card2.classList.remove("flipped");
+    }, 1000);
+    score = Math.max(0, score - 5);
+  }
+
+  document.getElementById("score").textContent = score;
+
+  setTimeout(() => {
+    flippedCards = [];
+    canFlip = true;
+  }, 1000);
+}
+
+function endGame() {
+  clearInterval(timer);
+  document.getElementById("finalTime").textContent = formatTime(seconds);
+  document.getElementById("finalScore").textContent = score;
+  document.getElementById("winMessage").style.display = "block";
+}
+
+function restartGame() {
+  const gameBoard = document.getElementById("gameBoard");
+  gameBoard.innerHTML = "";
+  flippedCards = [];
+  matchedPairs = 0;
+  score = 0;
+  seconds = 0;
+  document.getElementById("score").textContent = "0";
+  document.getElementById("timer").textContent = "0:00";
+  document.getElementById("winMessage").style.display = "none";
+  clearInterval(timer);
+  initializeGame();
+}
+
+function startTimer() {
+  clearInterval(timer);
+  seconds = 0;
+  timer = setInterval(() => {
+    seconds++;
+    document.getElementById("timer").textContent = formatTime(seconds);
+  }, 1000);
+}
+
+function formatTime(secs) {
+  const minutes = Math.floor(secs / 60);
+  const remainingSeconds = secs % 60;
+  return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+initializeGame();
+
+// Audio (Temporary Off)
+// window.onload = function () {
+//   let audio = new Audio("../Audio/AYAM DIDIK - INSTRUMENTAL.mp3");
+//   audio.play();
+//   audio.loop = true;
+//   audio.volume = 0.05;
+// };
