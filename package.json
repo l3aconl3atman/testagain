@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "compile:sass": "sass sass/main.scss css/style.css -w",
+    "start": "concurrently \"npm run dev\" \"npm run compile:sass\""
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "swiper": "^11.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "install": "^0.13.0",
+    "npm": "^10.8.2",
+    "sass": "^1.83.4",
+    "vite": "^5.4.10"
+  },
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "Webpage for Final Year Project",
+  "main": "index.js",
+  "author": "Jethro",
+  "license": "ISC"
+}
