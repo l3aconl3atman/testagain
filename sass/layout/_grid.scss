@@ -1,0 +1,89 @@
+@use "../abstracts";
+// @use "../abstracts/mixins";
+
+.row {
+  max-width: abstracts.$grid-width;
+  background-color: none;
+  margin: 0 auto;
+
+  &:not(:last-child) {
+    margin-bottom: abstracts.$gutter-vertical;
+  }
+
+  &:first-child {
+    margin-top: abstracts.$gutter-vertical;
+  }
+
+  @include abstracts.clearfix;
+
+  [class^="col-"] {
+    background-color: none;
+    float: left;
+
+    &:not(:last-child) {
+      margin-right: abstracts.$gutter-horizontal;
+    }
+
+    h3 {
+      font-size: 4rem;
+      text-align: center;
+      margin-bottom: abstracts.$gutter-vertical;
+    }
+  }
+
+  .col-1-of-2 {
+    width: calc((100% - #{abstracts.$gutter-horizontal}) / 2);
+  }
+
+  .col-1-of-2--img {
+    position: relative;
+  }
+
+  .col-1-of-3 {
+    width: calc((100% - (2 * #{abstracts.$gutter-horizontal})) / 3);
+  }
+
+  .col-1-of-4 {
+    width: calc((100% - (3 * #{abstracts.$gutter-horizontal})) / 4);
+  }
+
+  .col-2-of-3 {
+    // My Way
+    // width: calc(100% - ((100% - (2 * #{$gutter-horizontal})) / 3) - #{$gutter-horizontal});
+    // Teacher's Way
+    width: calc(
+      2 * ((100% - (2 * #{abstracts.$gutter-horizontal})) / 3) +
+        abstracts.$gutter-horizontal
+    );
+  }
+
+  .col-2-of-4 {
+    width: calc(
+      2 * ((100% - (3 * #{abstracts.$gutter-horizontal})) / 4) +
+        abstracts.$gutter-horizontal
+    );
+  }
+
+  .col-3-of-4 {
+    width: calc(
+      3 * ((100% - (3 * #{abstracts.$gutter-horizontal})) / 4) + 2 *
+        abstracts.$gutter-horizontal
+    );
+  }
+}
+
+.spline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 50vw;
+
+  iframe {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 2rem;
+    box-shadow: abstracts.$shadow-light;
+  }
+}

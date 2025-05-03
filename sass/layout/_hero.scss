@@ -1,0 +1,15 @@
+@use "../abstracts";
+
+.hero-page {
+  background: abstracts.$hero--background;
+  max-height: 90vh;
+
+  .hero-title {
+    margin-bottom: abstracts.$margin-bottom;
+  }
+}
+
+// .hero-container {
+//   .information-btn {
+//   }
+// }

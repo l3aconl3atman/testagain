@@ -1,0 +1,109 @@
+@use "./abstracts/mixins" as *;
+@use "./abstracts/functions";
+@use "./abstracts/variables";
+
+@import "./base/animations";
+@import "./base/base";
+@import "./base/typography";
+@import "./base/utilities";
+
+@import "./components/button";
+@import "./components/gallery";
+@import "./components/popup";
+@import "./components/size";
+@import "./components/image";
+
+@import "./layout/about";
+@import "./layout/demo";
+@import "./layout/grid";
+@import "./layout/header";
+@import "./layout/hero";
+@import "./layout/gallery";
+@import "./layout/member";
+@import "./layout/merch";
+@import "./layout/footer";
+@import "./layout/tools";
+@import "./layout/trailer";
+@import "./libraries/swiper";
+
+@import "./pages/home";
+
+/* parallax 视差基础样式 */
+/* main.scss 末尾 */
+.parallax-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.parallax-img {
+  position: absolute;
+  top: 15%;
+  transform: translateY(-50%);
+  will-change: transform;
+  backface-visibility: hidden;
+  width: 200px; /* 缩小宽度 */
+  height: auto;
+  opacity: 0.5; /* 半透明，可按需删 */
+}
+
+.parallax-img.left {
+  left: 10px;
+}
+.parallax-img.right {
+  right: 10px;
+}
+
+/* —— 全局底层渐变背景 —— */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: none !important; // 清除任何现有背景
+}
+
+html::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; // 放到最底层
+  background: linear-gradient(135deg, #fbe0aa, #92e1f0, #a3eea3);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* —— 强制内容容器透明 —— */
+header,
+main,
+section,
+footer,
+.nav,
+.hero-page,
+.about-us-section,
+.member-section,
+.merch-section,
+.footer,
+.section-padding--full,
+.section-padding--side {
+  background: transparent !important;
+}

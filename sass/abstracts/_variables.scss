@@ -1,0 +1,74 @@
+// Spline Color Code
+$color-spline--orange: #ebd13b;
+$color-spline--pink: #ff3af3;
+$color-spline--cyan: #3afcc6;
+$color-spline--blue: #4480ff;
+
+// Scene Sky Color
+$color--grey: #d1d1d13b;
+$color--dawn: #fbf4cb;
+$color--morning: #bdedfa;
+$color--noon: #8ae3fc;
+$color--afternoon: #aaced5;
+$color--sunset: #efb89d;
+$color--dusk: #dc937d;
+$color--night: #7e6a97;
+$color--midnight: #403675;
+$color--dark-grey: #333;
+
+// WebPage Colours
+$header--background: linear-gradient(to bottom, $color--dawn 80%, #fffdf6 100%);
+$hero--background: linear-gradient(to bottom, #fffdf6 90%, $color--noon 100%);
+$about-us--background: linear-gradient(
+  to bottom,
+  $color--noon 85%,
+  $color--sunset 100%
+);
+$member--background: linear-gradient(
+  to bottom,
+  $color--sunset 85%,
+  $color--dusk 100%
+);
+$merch--background: linear-gradient(
+  to bottom,
+  $color--dusk 85%,
+  $color--night 100%
+);
+$footer--background: linear-gradient(
+  to bottom,
+  $color--night 85%,
+  $color--midnight 100%
+);
+
+// $color-background: #fffdf6;
+$color-black: #000;
+$color-red: #f00;
+
+// FONT-SIZE
+$title-xlarge: 6rem;
+$title-large: 4rem;
+$title-medium: 2.25rem;
+$title-small: 1.5rem;
+$font-tiny: 0.625rem;
+$font-mini: 0.75rem;
+$font-small: 1.25rem;
+$font-smedium: 1.5rem;
+$font-medium: 1.75rem;
+$font-large: 2.25rem;
+$font-english: 1rem;
+$font-mandarin: 2rem;
+
+// GRID
+$grid-width: 124rem;
+$gutter-vertical: 5rem;
+$gutter-horizontal: 3.75rem;
+
+// MARGIN
+$margin-middle: 0 4rem;
+$margin-bottom: 2rem;
+
+// PADDING
+$padding--card: 1rem 4rem;
+
+// SHADOW
+$shadow-light: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px;

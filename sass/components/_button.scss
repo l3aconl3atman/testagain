@@ -1,0 +1,50 @@
+@use "../abstracts";
+
+.nav {
+  align-items: center;
+  list-style: none;
+
+  &-btn {
+    font-size: abstracts.$font-medium;
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: #0a2225;
+      font-weight: 600;
+      transition: all 0.5s ease;
+    }
+
+    &:hover {
+      letter-spacing: 0.2rem;
+      color: #0a2225;
+      // transition: all 0.5s ease;
+    }
+  }
+}
+
+.text-border {
+  // border: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+
+.copy-btn {
+  padding: 8px;
+  color: white;
+  font-family: "BaksoSapi", sans-serif;
+  border: none;
+  background: none;
+  background-color: #05b34d;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+
+  &:hover {
+    background-color: #048b3b;
+  }
+
+  &:active {
+    background-color: #036129;
+  }
+}

@@ -1,0 +1,49 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: #fffdf6;
+  color: #000;
+  position: relative;
+  // overflow: auto;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: variables.$margin-bottom;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: variables.$margin-bottom;
+}
+
+.hero-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .hero-container {
+    height: 80vh;
+    width: 80vw;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+}

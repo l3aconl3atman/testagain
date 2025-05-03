@@ -1,0 +1,77 @@
+@use "../abstracts";
+
+.gallery-page {
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .gallery-title {
+    margin-top: abstracts.$margin-bottom;
+    margin-bottom: abstracts.$margin-bottom;
+  }
+
+  .img-container {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .img-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+
+      img {
+        border-radius: 1rem;
+        width: 20rem;
+        // filter: saturate(20%); // 🔥 Low saturation initially
+        transition: all 0.4s ease-in-out;
+      }
+
+      .img-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0) 50%,
+          abstracts.$color-spline--orange 100%
+        );
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0; // 🔥 Hidden initially
+        pointer-events: none; // Allow hovering through overlay
+        transition: opacity 0.4s ease-in-out;
+
+        .description {
+          position: absolute;
+          bottom: 0;
+          color: black;
+          font-size: abstracts.$font-medium;
+          font-weight: bold;
+          text-align: center;
+          pointer-events: none;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        img {
+          filter: saturate(100%); // 🔥 Full saturation on hover
+          transform: scale(1.05) translateY(-3px);
+          box-shadow: 0 10px 20px rgba(#000, 0.2);
+        }
+
+        .img-overlay {
+          opacity: 1; // 🔥 Fade in overlay on hover
+        }
+      }
+    }
+  }
+}

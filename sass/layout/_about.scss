@@ -1,0 +1,90 @@
+@use "../abstracts";
+
+.about-us-section {
+  background: abstracts.$about-us--background;
+
+  p {
+    font-size: abstracts.$font-smedium;
+    line-height: 2.75rem;
+  }
+}
+
+// .about-us-title {
+// }
+
+[class^="about-us--flex"] {
+  &:not(:last-child) {
+    margin-bottom: abstracts.$gutter-vertical;
+  }
+}
+
+.about-us--flex {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: abstracts.$gutter-horizontal;
+
+  .flex-1-of-2 {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .about-us--img {
+    max-width: 100%;
+    .img {
+      width: 124%;
+      transform: translate(-10%);
+    }
+
+    .img-special {
+      height: 30rem;
+    }
+  }
+
+  .flex-1-of-3 {
+    max-height: 100%;
+  }
+
+  .flex-2-of-3 {
+    flex: 2;
+    max-width: 66.67%;
+  }
+}
+// Code
+// .about-us--img {
+//   position: absolute;
+//   top: 0;
+//   left: 50%;
+//   transform: translate(-50%, 50%); /* Centers the image */
+//   width: 100%; /* Ensures the image fits within the container */
+//   height: auto; /* Maintains aspect ratio */
+// }
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 680px;
+
+  .z-index3 {
+    z-index: 3;
+  }
+
+  .z-index2 {
+    z-index: 2;
+  }
+
+  .empty-div {
+    display: block;
+  }
+
+  iframe {
+    position: absolute;
+    transform: translate(-30%);
+    width: 1000px;
+    height: 1000px;
+    border-radius: 30rem;
+    // border: 1px dashed black;
+  }
+}

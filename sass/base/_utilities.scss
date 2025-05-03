@@ -1,0 +1,38 @@
+.hidden {
+  display: none;
+}
+
+.section-padding--full {
+  padding: 2rem 4rem;
+}
+
+.section-padding--fatside {
+  padding: 0 11.5rem;
+}
+
+.section-padding--side {
+  padding: 0 2rem;
+}
+
+.overlay,
+.gOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+}
+
+.disable-scroll {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
