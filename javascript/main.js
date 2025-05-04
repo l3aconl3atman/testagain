@@ -168,38 +168,45 @@ window.onload = function () {
   audio.volume = 0.03;
 };
 
-// 取代旧的 parallax 代码
-// —— 开始 ——
-// 1. 初始化：把每张图和它的速度、当前位置存为对象
 const imagesState = Array.from(document.querySelectorAll(".parallax-img")).map(
   (img) => ({
     el: img,
     speed: parseFloat(img.dataset.speed),
-    y: 0, // 记录当前 transformY
+    y: 0,
   })
 );
 
 let latestScrollY = 0;
 let ticking = false;
 
-// 2. 监听 scroll，只更新目标值 latestScrollY
 window.addEventListener("scroll", () => {
   latestScrollY = window.pageYOffset;
   if (!ticking) requestAnimationFrame(updateParallax);
   ticking = true;
 });
 
-// 3. 缓动更新函数
 function updateParallax() {
   imagesState.forEach((obj) => {
-    // 目标位置
     const targetY = -latestScrollY * obj.speed;
-    // 缓动插值：当前位置向目标位置靠近 10%
     obj.y += (targetY - obj.y) * 0.1;
-    // 应用 GPU 加速的 translate3d
     obj.el.style.transform = `translate3d(0, ${obj.y}px, 0)`;
   });
-  // 每帧都请求下一帧，直到缓动接近完成
   requestAnimationFrame(updateParallax);
 }
-// —— 结束 ——
+
+const goToTopBtn = document.querySelector(".go-to-top");
+
+window.addEventListener("scroll", function () {
+  if (window.scrollY > 300) {
+    goToTopBtn.classList.add("show");
+  } else {
+    goToTopBtn.classList.remove("show");
+  }
+});
+
+goToTopBtn.addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
