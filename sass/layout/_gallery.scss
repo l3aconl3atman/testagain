@@ -13,6 +13,7 @@
   }
 
   .img-container {
+    margin-top: abstracts.$margin-bottom;
     display: flex;
     gap: 4rem;
     flex-wrap: wrap;
@@ -25,7 +26,7 @@
 
       img {
         border-radius: 1rem;
-        width: 20rem;
+        width: 18rem;
         // filter: saturate(20%); // 🔥 Low saturation initially
         transition: all 0.4s ease-in-out;
       }
