@@ -6,6 +6,11 @@
   align-items: center;
   display: flex;
 
+  .member-title {
+    margin-bottom: -4rem;
+    font-size: abstracts.$title-large;
+  }
+
   .team-members {
     min-width: 80rem;
     max-width: 78rem;

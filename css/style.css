@@ -123,6 +123,10 @@ body {
   padding: 0 2rem;
 }
 
+.margin-bottom {
+  margin-bottom: 2rem;
+}
+
 .overlay,
 .gOverlay {
   position: absolute;
@@ -310,6 +314,11 @@ img {
   font-size: 1.5rem;
   line-height: 2.75rem;
 }
+.about-us-section .about-us-title {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 4rem;
+}
 
 [class^=about-us--flex]:not(:last-child) {
   margin-bottom: 5rem;
@@ -376,6 +385,10 @@ img {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+.demo-body .demo-page .demo-title {
+  margin-bottom: 2rem;
+  font-size: 4rem;
 }
 .demo-body .demo-page .demo-container {
   height: 75vh;
@@ -474,6 +487,7 @@ img {
 }
 .hero-page .hero-title {
   margin-bottom: 2rem;
+  font-size: 4rem;
 }
 
 .gallery-page {
@@ -486,6 +500,7 @@ img {
 .gallery-page .gallery-title {
   margin-top: 2rem;
   margin-bottom: 2rem;
+  font-size: 4rem;
 }
 .gallery-page .img-container {
   margin-top: 2rem;
@@ -542,6 +557,10 @@ img {
   flex-direction: column;
   align-items: center;
   display: flex;
+}
+.member-section .member-title {
+  margin-bottom: -4rem;
+  font-size: 4rem;
 }
 .member-section .team-members {
   min-width: 80rem;
@@ -686,7 +705,7 @@ img {
   background: linear-gradient(to bottom, #dc937d 85%, #7e6a97 100%);
 }
 .merch-section .merch-title {
-  margin-bottom: 2rem;
+  font-size: 4rem;
 }
 .merch-section .merch-area {
   max-width: 100rem;

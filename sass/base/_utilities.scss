@@ -1,3 +1,5 @@
+@use "../abstracts";
+
 .hidden {
   display: none;
 }
@@ -12,6 +14,10 @@
 
 .section-padding--side {
   padding: 0 2rem;
+}
+
+.margin-bottom {
+  margin-bottom: abstracts.$margin-bottom;
 }
 
 .overlay,
