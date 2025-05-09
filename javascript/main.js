@@ -165,7 +165,7 @@ window.onload = function () {
   let audio = new Audio("../Audio/AYAM DIDIK - INSTRUMENTAL.mp3");
   audio.play();
   audio.loop = true;
-  audio.volume = 0.03;
+  audio.volume = 0.1;
 };
 
 const imagesState = Array.from(document.querySelectorAll(".parallax-img")).map(
