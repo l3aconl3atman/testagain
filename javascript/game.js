@@ -12,6 +12,17 @@ const successSound = new Audio("../Audio/game/success.wav");
 
 function initializeGame() {
   const gameBoard = document.getElementById("gameBoard");
+  gameBoard.innerHTML = "";
+  cards.length = 0;
+  flippedCards = [];
+  matchedPairs = 0;
+  score = 0;
+  seconds = 0;
+  canFlip = false; // Disable flipping initially
+  document.getElementById("score").textContent = "0";
+  document.getElementById("timer").textContent = "0:00";
+  document.getElementById("winMessage").style.display = "none";
+
   const cardImages = [];
 
   for (let i = 1; i <= 10; i++) {
@@ -23,23 +34,28 @@ function initializeGame() {
 
   cardImages.forEach((img, index) => {
     const card = document.createElement("div");
-    card.className = "card";
+    card.className = "card flipped"; // Show front initially
     card.dataset.cardId = index;
     card.dataset.image = img;
 
     card.innerHTML = `
-              <div class="card-face card-front">
-                  <img src="../img/Game/${img}" alt="food">
-              </div>
-              <div class="card-face card-back"></div>
-          `;
+      <div class="card-face card-front">
+        <img src="../img/Game/${img}" alt="food">
+      </div>
+      <div class="card-face card-back"></div>
+    `;
 
     card.addEventListener("click", () => flipCard(card));
     gameBoard.appendChild(card);
     cards.push(card);
   });
 
-  startTimer();
+  // Show preview for 1 second, then flip all cards back
+  setTimeout(() => {
+    cards.forEach((card) => card.classList.remove("flipped"));
+    canFlip = true;
+    startTimer();
+  }, 1000);
 }
 
 function flipCard(card) {
@@ -136,12 +152,30 @@ function shuffleArray(array) {
   return array;
 }
 
-initializeGame();
+window.addEventListener("DOMContentLoaded", () => {
+  const gameBoard = document.getElementById("gameBoard");
 
-// Audio (Temporary Off)
-// window.onload = function () {
-//   let audio = new Audio("../Audio/AYAM DIDIK - INSTRUMENTAL.mp3");
-//   audio.play();
-//   audio.loop = true;
-//   audio.volume = 0.05;
-// };
+  // Hide game board and restart button initially
+  gameBoard.style.display = "none";
+  document.querySelector(".game-controls").style.display = "none";
+
+  // Create Start Game button
+  const startBtn = document.createElement("button");
+  startBtn.textContent = "開始遊戲";
+  startBtn.className = "start-button mandarin-text";
+  startBtn.style.padding = "12px 24px";
+  startBtn.style.fontSize = "1.2rem";
+  startBtn.style.margin = "40px auto";
+  startBtn.style.display = "block";
+
+  // When button is clicked
+  startBtn.addEventListener("click", () => {
+    startBtn.remove(); // Remove start button
+    gameBoard.style.display = "grid"; // Show game board
+    document.querySelector(".game-controls").style.display = "block"; // Show restart
+    initializeGame(); // Start the game!
+  });
+
+  // Add start button before the game board
+  gameBoard.parentNode.insertBefore(startBtn, gameBoard);
+});
