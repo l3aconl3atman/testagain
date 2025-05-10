@@ -55,7 +55,7 @@ function initializeGame() {
     cards.forEach((card) => card.classList.remove("flipped"));
     canFlip = true;
     startTimer();
-  }, 1000);
+  }, 3000);
 }
 
 function flipCard(card) {
@@ -165,8 +165,12 @@ window.addEventListener("DOMContentLoaded", () => {
   startBtn.className = "start-button mandarin-text";
   startBtn.style.padding = "12px 24px";
   startBtn.style.fontSize = "1.2rem";
-  startBtn.style.margin = "40px auto";
+  startBtn.style.margin = "auto auto";
   startBtn.style.display = "block";
+  startBtn.style.borderRadius = "5px";
+  startBtn.style.border = "none";
+  startBtn.style.color = "white";
+  startBtn.style.backgroundColor = "#4caf50";
 
   // When button is clicked
   startBtn.addEventListener("click", () => {
