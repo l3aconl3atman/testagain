@@ -183,3 +183,11 @@ window.addEventListener("DOMContentLoaded", () => {
   // Add start button before the game board
   gameBoard.parentNode.insertBefore(startBtn, gameBoard);
 });
+
+// Middle mouse Disable Test
+document.addEventListener("mousedown", function (e) {
+  if (e.button === 1) {
+    e.preventDefault();
+    alert("Middle mouse click has been disabled");
+  }
+});
