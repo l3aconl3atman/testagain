@@ -185,13 +185,27 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // Middle mouse Disable Test
-document.addEventListener("mousedown", function (e) {
-  if (e.button === 2) {
+// 阻止右鍵選單
+document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+});
+
+// 阻止 F12 和常見的開發者工具快捷鍵
+document.addEventListener("keydown", function (e) {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey &&
+      e.shiftKey &&
+      (e.key === "I" || e.key === "J" || e.key === "C")) ||
+    (e.ctrlKey && e.key === "U")
+  ) {
     e.preventDefault();
-    alert("Right mouse click has been disabled");
   }
+});
+
+// 阻止滑鼠中鍵（滾輪點擊）
+document.addEventListener("mousedown", function (e) {
   if (e.button === 1) {
     e.preventDefault();
-    alert("Middle mouse click has been disabled");
   }
 });
